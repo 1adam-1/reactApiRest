@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
+
 
 function CompteList() {
     // Déclaration d'un état pour stocker les comptes
@@ -7,8 +9,8 @@ function CompteList() {
 
     // Utilisation de useEffect pour effectuer un appel à l'API dès le chargement
     useEffect(() => {
-        const url = 'http://localhost:8082/banque/comptes';
-        axios.get(url)
+
+        axios.get(`${API_BASE_URL}/comptes`)
             .then(response => setComptes(response.data)) // Mise à jour de l'état avec les données récupérées
             .catch(error => console.error(error)); // Gestion des erreurs
     }, []); // Le tableau vide indique que l'effet s'exécute uniquement au montage du composant
